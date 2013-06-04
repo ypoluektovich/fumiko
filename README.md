@@ -91,6 +91,9 @@ Run `f5-check.sh` with one parameter — the path to the profile
 directory. (If the parameter is missing, `./profile` is assumed.)
 This will trigger a check of all items.
 
+You may specify an item directory as the parameter. In this case, only
+that item will be checked.
+
 Fumiko needs a temporary directory to work. She uses the `mktemp -d`
 command to create it, and deletes it after she is finished.
 

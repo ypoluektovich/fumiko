@@ -135,8 +135,12 @@ F5_TEMP_DIR=$( mktemp -d )
 log_info "Profile dir: %s" "${PROFILE_DIR}"
 log_info "F5 temp dir: %s" "${F5_TEMP_DIR}"
 
-for item in $( find "${PROFILE_DIR}" -mindepth 1 -type d -name "*.f5" -printf "%P\n" -prune ); do
-	checkSingle "$item"
-done
+if [[ "${PROFILE_DIR}" =~ \.f5$ ]]; then
+	checkSingle "."
+else
+	for item in $( find "${PROFILE_DIR}" -type d -name "*.f5" -printf "%P\n" -prune ); do
+		checkSingle "$item"
+	done
+fi
 
 rm -rf "${F5_TEMP_DIR}"
