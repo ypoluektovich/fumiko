@@ -83,6 +83,16 @@ The created items will be using `cmp` as their diff engine.
 like bad characters, invalid paths or items-in-items (e.g.
 `outer.f5/inner.f5`), nor does she check URL well-formedness.
 
+#### Listing of items
+
+Given a directory, you can list all items in it:
+
+    ./f5-list-items.sh /my/profile/dir
+
+The items won't be sorted. If you specify an item dir, only a single
+dot (`.`) will be printed. Only one profile directory is checked (the
+first command line argument).
+
 
 Running
 -------

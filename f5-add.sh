@@ -1,6 +1,7 @@
 #!/bin/bash
 
-source ./f5-utils.sh
+F5_SCRIPT_DIR=$( dirname $( realpath "$0" ) )
+source "${F5_SCRIPT_DIR}/f5-utils.sh"
 
 
 ### Add a single item

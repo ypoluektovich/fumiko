@@ -1,6 +1,7 @@
 #!/bin/bash
 
-source ./f5-utils.sh
+F5_SCRIPT_DIR=$( dirname $( realpath "$0" ) )
+source "${F5_SCRIPT_DIR}/f5-utils.sh"
 
 
 ### Retrieves the item's current remote content
@@ -135,12 +136,8 @@ F5_TEMP_DIR=$( mktemp -d )
 log_info "Profile dir: %s" "${PROFILE_DIR}"
 log_info "F5 temp dir: %s" "${F5_TEMP_DIR}"
 
-if [[ "${PROFILE_DIR}" =~ \.f5$ ]]; then
-	checkSingle "."
-else
-	for item in $( find "${PROFILE_DIR}" -type d -name "*.f5" -printf "%P\n" -prune ); do
-		checkSingle "$item"
-	done
-fi
+for item in $( "${F5_SCRIPT_DIR}/f5-list-items.sh" "${PROFILE_DIR}" ); do
+	checkSingle "$item"
+done
 
 rm -rf "${F5_TEMP_DIR}"
