@@ -83,7 +83,7 @@ The created items will be using `cmp` as their diff engine.
 like bad characters, invalid paths or items-in-items (e.g.
 `outer.f5/inner.f5`), nor does she check URL well-formedness.
 
-#### Listing of items
+#### Listing items
 
 Given a directory, you can list all items in it:
 
@@ -110,7 +110,7 @@ command to create it, and deletes it after she is finished.
 Where is the result?
 --------------------
 
-After (successfully) running the check, in the item directory you will
+After (successfully) running the check, in each item directory you will
 find a directory `revisions`. It will contain:
 
   * compressed snapshots of the item. The snapshots will be named after
@@ -124,5 +124,6 @@ The snapshots are tarballs compressed with xz. Their contents are:
   * `header` — the HTTP headers of the item server's response;
   * `timestamp` — the time at which the snapshot was retrieved.
 
-In the near future Fumiko will learn how to list and extract the
-snapshots.
+You can get a list of revisions by running:
+
+    ./f5-list-revisions /my/profile/dir/item.f5
